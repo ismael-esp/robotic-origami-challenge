@@ -1,0 +1,10 @@
+{
+ "ckpt": "outputs/ckpt/best_v9_finetune.pt",
+ "pairs": 112,
+ "separation_rad": 0.0914003789158804,
+ "control_err_rad": 0.01425618602661416,
+ "swapped_vs_state_traj_rad": 0.03751281569878172,
+ "swapped_vs_image_traj_rad": 0.07023123016447894,
+ "visual_pull": 0.25444784745992804,
+ "vision_win_rate": 0.0625
+}

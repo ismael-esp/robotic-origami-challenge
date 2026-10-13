@@ -1,0 +1,24 @@
+{
+ "ckpt": "outputs/ckpt/best_v9_finetune.pt",
+ "frames": 60,
+ "mean_abs_diff_rad": 0.034086279571056366,
+ "per_group": {
+  "L_arm": 0.05491382256150246,
+  "L_hand": 0.029494600370526314,
+  "R_arm": 0.06542281806468964,
+  "R_hand": 0.03035801835358143,
+  "torso": 0.008070548996329308
+ },
+ "saturation_224": {
+  "left_middle_DIP": 0.0,
+  "left_ring_DIP": 0.0,
+  "left_pinky_DIP": 0.0,
+  "right_pinky_DIP": 0.0
+ },
+ "saturation_480": {
+  "left_middle_DIP": 0.0,
+  "left_ring_DIP": 0.0,
+  "left_pinky_DIP": 0.0,
+  "right_pinky_DIP": 0.0
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "ckpt": "outputs/ckpt/best_v10_sd50n10.pt",
+ "episodes": 8,
+ "steps": 900,
+ "robot_model": {
+  "L_arm": 0.06710296743074123,
+  "L_hand": 0.18893804383779944,
+  "R_arm": 0.05912606615737848,
+  "R_hand": 0.10948844733894789,
+  "torso": 0.1477548133870621
+ },
+ "note": "images/tactile come from the demo timeline (no paper simulator), so drift is a LOWER BOUND on real closed-loop divergence",
+ "results": {
+  "45": {
+   "exec_horizon": 45,
+   "episodes": 8,
+   "steps": 900,
+   "arm_drift_final_rad": 0.026625925675034523,
+   "arm_drift_mean_rad": 0.02647347003221512,
+   "all_joint_drift_mean_rad": 0.027926059439778328,
+   "arm_drift_at_s": {
+    "5": 0.020893443375825882,
+    "10": 0.014998112805187702,
+    "15": 0.02384875901043415,
+    "20": 0.023184847086668015
+   },
+   "per_group_final_rad": {
+    "L_arm": 0.025805074721574783,
+    "L_hand": 0.025888431817293167,
+    "R_arm": 0.027446776628494263,
+    "R_hand": 0.02683371864259243,
+    "torso": 0.0024927163030952215
+   }
+  }
+ }
+}

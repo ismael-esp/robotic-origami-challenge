@@ -1,0 +1,61 @@
+
+//Episode 1 labeling
+{
+  "_schema": {
+    "description": "Hand-labeled 6 fold-STAGE boundaries per episode (a stage = a semantic folding step; may contain many grasp/hold/press-release sub-actions). Labeled from wrist_right + head_left video.",
+    "boundaries_s": "5 internal boundaries (seconds from episode start) splitting into 6 stages 0..5",
+    "stages": "short name per fold stage",
+    "status": "first human review episode 1 video: file-000.mp4 | manual"
+  },
+  "season_POC22061_2026_07_02_14_23_26_train/ep0": {
+    "start_point": 0,
+    "duration_s": 198,
+    "final_second_of_task": 198, //minute: 3:18
+    "range": [0-30, 30-63, 63-104, 104-138, 138-180, 180-198], // (from - to) in seconds,
+    "stages": ["first_corner_nose", "second_corner_nose", "body_fold", "wing1_fold", "wing2_fold", "body_refine"],
+    "labeled_by": "human first episode review",
+    "status": "hand made label"
+  }
+}
+
+// the 2 seconds in between the two episodes are where the human appear take the plane and put another paper in the table (reset the task) we dont count this.
+
+//Episode 2 labeling
+{
+  "_schema": {
+    "description": "Hand-labeled 6 fold-STAGE boundaries per episode (a stage = a semantic folding step; may contain many grasp/hold/press-release sub-actions). Labeled from wrist_right + head_left video.",
+    "boundaries_s": "5 internal boundaries (seconds from episode start) splitting into 6 stages 0..5",
+    "stages": "short name per fold stage",
+    "status": "first human review episode 2 video: file-000.mp4 | manual"
+  },
+  "season_POC22061_2026_07_02_14_23_26_train/ep0": {
+    "start_point": 202,
+    "duration_s": 191,
+    "final_second_of_task": 393, //minute : 6:33
+    "range": [202-230, 230-255, 255-302, 302-341, 341-374, 374-393] // (from - to) in seconds,
+    "stages": ["first_corner_nose", "second_corner_nose", "body_fold", "wing1_fold", "wing2_fold", "body_refine"],
+    "labeled_by": "human first episode 2 review",
+    "status": "hand made label"
+  }
+}
+
+// Comment description of what happend in each stage:
+
+/*
+
+1) first_corner_nose: both hands in home pose ,they approach to the paper grasp the first corner of the paper and bend it to the middle reference line. one hand (fingers hold the paper to the table meanwhile the other press to the paper and fold it - then they switch the other hand now press the paper to the table and the other fold and bend the paper to the other direction (complete and refine the fold).
+
+2) second_corner_nose: meanwhile one hand gold the paper (most of times left) the right one grasp the other corner of the paper and bend it to the middle reference line. one hand (fingers hold the paper to the table meanwhile the other press to the paper and fold it - then they switch the other hand now press the paper to the table and the other fold and bend the paper to the other direction (complete and refine the fold).
+
+2) body_fold: the hands release the paper then the right hand grasp the paper from the nose and rotate it 90 degrees in anti-clockwise direction. the left hand grasp the paper from the uper left part (back of the paper) and the right hand grasp it from the uper right part of the paper and both fold the paper towards the robot (camera view). to refine the right hand hold the paper by the upper part of the nose and the left hand press from the rigth hand position to the left (direction to the back of the paper) bending the paper. then they siwtch the left hand hold and the right onme bends fro mthe left to the right. in this stage they refind the paper twice (not super important).
+
+4) wing1_fold : menawhile the paper is in the same pose and orientation. the left arm holds the plane form the upper left part meanwhile the right hand hold the wing 1 from down to up. fro mthe center left arm hold right fold and switch left fold right hold. the fold is using the the line mark  as reference.
+
+5) wing2_fold: this stage start when one of the hands grasp the plane from the bottom remaining wing and flip it so now that part is in the top and the guide line is visible using both hands they wing2 is fold over the guide line. then the refine come same as before the left arm hold the plane to the table and the right fold and switch and fine in the same way.
+
+6) body_refine: the last stage start when one of the hands grasp the plane from the body (center) and flip it so the body of the plane now is looking up and the wings are in the table now the left hand hold the winds to the table the right hand refines the fold of the body and the wings. finally the right hand (what i saw i nthis episode) grasp the plane from the body flip it (leaving the wings facing up) and place the plane in the table. finally both hands return to home pose.
+
+// point out my condition to when to finish and therefore start the next stage is right after the refinment fold made by both the hands. 
+*/
+
+

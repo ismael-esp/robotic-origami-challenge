@@ -1,0 +1,14 @@
+{
+ "ckpt": "outputs/ckpt/best_v9_finetune.pt",
+ "frames": 120,
+ "mean_abs_diff_rad": 0.00012761878315359354,
+ "per_group": {
+  "L_arm": 0.00015060743317008018,
+  "L_hand": 0.00012060435983585194,
+  "R_arm": 0.00016717254766263068,
+  "R_hand": 0.0001421809574821964,
+  "torso": 4.1354902350576594e-05
+ },
+ "hand_flexion_correct": 0.5148882269859314,
+ "hand_flexion_degenerate": 0.5148851275444031
+}

@@ -1,0 +1,41 @@
+{
+ "ckpt": "outputs/ckpt/best_v9_finetune.pt",
+ "vision": "frozen",
+ "episodes": 4,
+ "seconds": 60.0,
+ "results": {
+  "async": {
+   "dip_saturation_frac": {
+    "left_middle_DIP": 0.0,
+    "left_ring_DIP": 0.0,
+    "left_pinky_DIP": 0.0,
+    "right_pinky_DIP": 0.0
+   },
+   "dip_saturation_mean": 0.0,
+   "mean_hand_flexion_rad": 0.1507977992296219,
+   "left_arm_drift_rad": 0.32020315527915955
+  },
+  "sync45": {
+   "dip_saturation_frac": {
+    "left_middle_DIP": 0.0,
+    "left_ring_DIP": 0.0,
+    "left_pinky_DIP": 0.0,
+    "right_pinky_DIP": 0.0
+   },
+   "dip_saturation_mean": 0.0,
+   "mean_hand_flexion_rad": 0.2953260540962219,
+   "left_arm_drift_rad": 0.2866007089614868
+  },
+  "sync15": {
+   "dip_saturation_frac": {
+    "left_middle_DIP": 0.0,
+    "left_ring_DIP": 0.0,
+    "left_pinky_DIP": 0.0,
+    "right_pinky_DIP": 0.0
+   },
+   "dip_saturation_mean": 0.0,
+   "mean_hand_flexion_rad": 0.19713109731674194,
+   "left_arm_drift_rad": 0.3240509331226349
+  }
+ }
+}

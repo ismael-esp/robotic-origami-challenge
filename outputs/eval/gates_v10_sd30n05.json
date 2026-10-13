@@ -1,0 +1,54 @@
+{
+  "ckpt": "outputs/ckpt/best_v10_sd30n05.pt",
+  "step": 12000,
+  "val_l1": 0.0419447624484698,
+  "n_cams": 4,
+  "n_tempos": 3,
+  "tempos": [
+    1.0,
+    1.25,
+    1.5
+  ],
+  "serve_contract": "v2",
+  "three_cam": false,
+  "corpus": {
+    "lmdb_path": "data/frames_224_finetune.lmdb",
+    "data_root": "data/finetune_data",
+    "norm_path": "outputs/norm_stats_v9_union.json",
+    "labels_path": "outputs/fold_labels_auto_finetune.json"
+  },
+  "protocol": "eval_gate_battery v1 (2026-08-04; v9 corpus-aware)",
+  "offline_serve_matched_l1": {
+    "tempo0": {
+      "norm": 0.04608,
+      "rad": 0.01729
+    },
+    "tempo1": {
+      "norm": 0.04925,
+      "rad": 0.01867
+    },
+    "tempo2": {
+      "norm": 0.05082,
+      "rad": 0.0193
+    }
+  },
+  "obedience": {
+    "mean_disp_per_tempo": {
+      "0": 0.0025771030378867483,
+      "1": 0.0030065318467313775,
+      "2": 0.0031941666298250008
+    },
+    "tempo1_ratio": 1.1666,
+    "tempo1_pass": true,
+    "tempo1_accept": [
+      1.15,
+      1.35
+    ],
+    "tempo2_ratio": 1.2394,
+    "tempo2_pass": false,
+    "tempo2_accept": [
+      1.3,
+      1.6
+    ]
+  }
+}

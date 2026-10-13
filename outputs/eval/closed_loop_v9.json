@@ -1,0 +1,78 @@
+{
+ "ckpt": "outputs/ckpt/best_v9_finetune.pt",
+ "episodes": 8,
+ "steps": 900,
+ "robot_model": {
+  "L_arm": 0.06710296743074123,
+  "L_hand": 0.18893804383779944,
+  "R_arm": 0.05912606615737848,
+  "R_hand": 0.10948844733894789,
+  "torso": 0.1477548133870621
+ },
+ "note": "images/tactile come from the demo timeline (no paper simulator), so drift is a LOWER BOUND on real closed-loop divergence",
+ "results": {
+  "45": {
+   "exec_horizon": 45,
+   "episodes": 8,
+   "steps": 900,
+   "arm_drift_final_rad": 0.036931075155735016,
+   "arm_drift_mean_rad": 0.03222708776593208,
+   "all_joint_drift_mean_rad": 0.0352332778275013,
+   "arm_drift_at_s": {
+    "5": 0.024028412997722626,
+    "10": 0.02089708298444748,
+    "15": 0.026248104870319366,
+    "20": 0.02877068519592285
+   },
+   "per_group_final_rad": {
+    "L_arm": 0.03699968382716179,
+    "L_hand": 0.03399133309721947,
+    "R_arm": 0.036862459033727646,
+    "R_hand": 0.038241490721702576,
+    "torso": 0.0028549598064273596
+   }
+  },
+  "15": {
+   "exec_horizon": 15,
+   "episodes": 8,
+   "steps": 900,
+   "arm_drift_final_rad": 0.03539609909057617,
+   "arm_drift_mean_rad": 0.035204850137233734,
+   "all_joint_drift_mean_rad": 0.03549491986632347,
+   "arm_drift_at_s": {
+    "5": 0.025009507313370705,
+    "10": 0.020359616726636887,
+    "15": 0.02703109011054039,
+    "20": 0.03228428587317467
+   },
+   "per_group_final_rad": {
+    "L_arm": 0.03669752553105354,
+    "L_hand": 0.028998516499996185,
+    "R_arm": 0.0340946726500988,
+    "R_hand": 0.036976274102926254,
+    "torso": 0.0026252788957208395
+   }
+  },
+  "5": {
+   "exec_horizon": 5,
+   "episodes": 8,
+   "steps": 900,
+   "arm_drift_final_rad": 0.037489064037799835,
+   "arm_drift_mean_rad": 0.05334871634840965,
+   "all_joint_drift_mean_rad": 0.049992166459560394,
+   "arm_drift_at_s": {
+    "5": 0.09368190169334412,
+    "10": 0.026097606867551804,
+    "15": 0.03991823270916939,
+    "20": 0.03819360211491585
+   },
+   "per_group_final_rad": {
+    "L_arm": 0.03863988071680069,
+    "L_hand": 0.02989906072616577,
+    "R_arm": 0.03633824363350868,
+    "R_hand": 0.04304266348481178,
+    "torso": 0.002945782383903861
+   }
+  }
+ }
+}

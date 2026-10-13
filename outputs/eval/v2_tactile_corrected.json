@@ -1,0 +1,35 @@
+{
+  "ckpt": "outputs/ckpt/best_v2_tactile.pt",
+  "step": 52000,
+  "saved_val_l1": 0.03796633705496788,
+  "n_samples": 3000,
+  "tactile": true,
+  "zero_tactile": false,
+  "overall_l1_norm": 0.03990769045756598,
+  "per_group_l1_norm": {
+    "L_arm": 0.04401660609379292,
+    "L_hand": 0.04020814589210567,
+    "R_arm": 0.04685065511937978,
+    "R_hand": 0.040062138157142956,
+    "torso": 0.027426114595158604
+  },
+  "per_fold_l1_norm": {
+    "first_corner_nose": 0.04047706861519951,
+    "second_corner_nose": 0.03252080344438002,
+    "body_fold": 0.04233798584691039,
+    "wing1_fold": 0.039669658548054876,
+    "wing2_fold": 0.04070908708277836,
+    "body_refine": 0.041503872348020145
+  },
+  "per_fold_n": {
+    "first_corner_nose": 435,
+    "second_corner_nose": 433,
+    "body_fold": 555,
+    "wing1_fold": 596,
+    "wing2_fold": 601,
+    "body_refine": 380
+  },
+  "mean_rad_error": 0.015033849805482842,
+  "arms_rad_error": 0.02100219713406065,
+  "hands_rad_error": 0.01515584934800885
+}

@@ -1,0 +1,13 @@
+{
+ "ckpt": "outputs/ckpt/best_v9_finetune.pt",
+ "frames": 100,
+ "mean_abs_delta_rad": {
+  "state": 0.0869821086525917,
+  "all 4 images": 0.0650506466627121,
+  "wrist images": 0.05110631883144379,
+  "head images": 0.01925552263855934,
+  "joint_torque": 0.01122601144015789,
+  "fold_id token": 0.00593440281227231,
+  "tactile vector": 0.002290678210556507
+ }
+}

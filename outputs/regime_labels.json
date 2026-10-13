@@ -1,0 +1,422 @@
+{
+ "season_POC22032_2026_05_14_19_21_01_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_14_19_21_01",
+  "episodes": 9,
+  "frames": 98694,
+  "complete": true
+ },
+ "season_POC22032_2026_05_14_20_40_58_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_14_20_40_58",
+  "episodes": 3,
+  "frames": 33169,
+  "complete": true
+ },
+ "season_POC22032_2026_05_14_21_08_06_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_14_21_08_06",
+  "episodes": 6,
+  "frames": 49678,
+  "complete": true
+ },
+ "season_POC22061_2026_05_18_19_25_41_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_18_19_25_41",
+  "episodes": 16,
+  "frames": 145115,
+  "complete": true
+ },
+ "season_POC22061_2026_05_20_16_07_05_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_20_16_07_05",
+  "episodes": 10,
+  "frames": 70880,
+  "complete": true
+ },
+ "season_POC22061_2026_05_23_19_21_25_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_23_19_21_25",
+  "episodes": 15,
+  "frames": 95347,
+  "complete": true
+ },
+ "season_POC22061_2026_05_26_19_13_22_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_26_19_13_22",
+  "episodes": 8,
+  "frames": 54942,
+  "complete": true
+ },
+ "season_POC22061_2026_05_27_15_57_42_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_27_15_57_42",
+  "episodes": 17,
+  "frames": 105100,
+  "complete": true
+ },
+ "season_POC22061_2026_05_28_10_34_44_train": {
+  "regime": "pre",
+  "timestamp": "2026_05_28_10_34_44",
+  "episodes": 16,
+  "frames": 97397,
+  "complete": true
+ },
+ "season_POC22061_2026_06_26_13_37_24_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_26_13_37_24",
+  "episodes": 13,
+  "frames": 87101,
+  "complete": true
+ },
+ "season_POC22061_2026_06_27_10_08_03_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_27_10_08_03",
+  "episodes": 16,
+  "frames": 105786,
+  "complete": true
+ },
+ "season_POC22061_2026_06_27_13_48_20_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_27_13_48_20",
+  "episodes": 15,
+  "frames": 103857,
+  "complete": true
+ },
+ "season_POC22061_2026_06_27_19_13_22_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_27_19_13_22",
+  "episodes": 15,
+  "frames": 97799,
+  "complete": true
+ },
+ "season_POC22061_2026_06_28_15_55_53_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_28_15_55_53",
+  "episodes": 15,
+  "frames": 97639,
+  "complete": true
+ },
+ "season_POC22061_2026_06_28_19_26_39_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_28_19_26_39",
+  "episodes": 14,
+  "frames": 92310,
+  "complete": true
+ },
+ "season_POC22061_2026_06_29_13_34_29_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_29_13_34_29",
+  "episodes": 8,
+  "frames": 52029,
+  "complete": true
+ },
+ "season_POC22061_2026_06_29_16_37_08_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_29_16_37_08",
+  "episodes": 8,
+  "frames": 46058,
+  "complete": true
+ },
+ "season_POC22061_2026_06_29_19_18_53_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_29_19_18_53",
+  "episodes": 14,
+  "frames": 80766,
+  "complete": true
+ },
+ "season_POC22061_2026_06_30_10_16_20_train": {
+  "regime": "pre",
+  "timestamp": "2026_06_30_10_16_20",
+  "episodes": 16,
+  "frames": 92290,
+  "complete": true
+ },
+ "season_POC22061_2026_07_01_13_35_43_train": {
+  "regime": "pre",
+  "timestamp": "2026_07_01_13_35_43",
+  "episodes": 17,
+  "frames": 101170,
+  "complete": true
+ },
+ "season_POC22061_2026_07_01_19_29_05_train": {
+  "regime": "pre",
+  "timestamp": "2026_07_01_19_29_05",
+  "episodes": 16,
+  "frames": 103380,
+  "complete": true
+ },
+ "season_POC22061_2026_07_02_14_23_26_train": {
+  "regime": "post",
+  "timestamp": "2026_07_02_14_23_26",
+  "episodes": 16,
+  "frames": 90782,
+  "complete": true
+ },
+ "season_POC22061_2026_07_02_16_04_24_train": {
+  "regime": "post",
+  "timestamp": "2026_07_02_16_04_24",
+  "episodes": 18,
+  "frames": 101335,
+  "complete": true
+ },
+ "season_POC22061_2026_07_02_19_10_24_train": {
+  "regime": "post",
+  "timestamp": "2026_07_02_19_10_24",
+  "episodes": 22,
+  "frames": 122144,
+  "complete": true
+ },
+ "season_POC22061_2026_07_04_10_09_32_train": {
+  "regime": "post",
+  "timestamp": "2026_07_04_10_09_32",
+  "episodes": 19,
+  "frames": 106392,
+  "complete": true
+ },
+ "season_POC22061_2026_07_04_13_39_40_train": {
+  "regime": "post",
+  "timestamp": "2026_07_04_13_39_40",
+  "episodes": 19,
+  "frames": 102934,
+  "complete": true
+ },
+ "season_POC22061_2026_07_04_16_13_34_train": {
+  "regime": "post",
+  "timestamp": "2026_07_04_16_13_34",
+  "episodes": 19,
+  "frames": 96192,
+  "complete": true
+ },
+ "season_POC22061_2026_07_04_20_38_34_train": {
+  "regime": "post",
+  "timestamp": "2026_07_04_20_38_34",
+  "episodes": 12,
+  "frames": 60377,
+  "complete": true
+ },
+ "season_POC22061_2026_07_05_10_11_10_train": {
+  "regime": "post",
+  "timestamp": "2026_07_05_10_11_10",
+  "episodes": 20,
+  "frames": 103859,
+  "complete": true
+ },
+ "season_POC22061_2026_07_05_13_37_13_train": {
+  "regime": "post",
+  "timestamp": "2026_07_05_13_37_13",
+  "episodes": 20,
+  "frames": 104129,
+  "complete": true
+ },
+ "season_POC22061_2026_07_05_16_23_24_train": {
+  "regime": "post",
+  "timestamp": "2026_07_05_16_23_24",
+  "episodes": 20,
+  "frames": 95692,
+  "complete": true
+ },
+ "season_POC22061_2026_07_06_11_05_16_train": {
+  "regime": "post",
+  "timestamp": "2026_07_06_11_05_16",
+  "episodes": 3,
+  "frames": 24768,
+  "complete": true
+ },
+ "season_POC22061_2026_07_07_10_52_58_train": {
+  "regime": "post",
+  "timestamp": "2026_07_07_10_52_58",
+  "episodes": 14,
+  "frames": 72516,
+  "complete": false
+ },
+ "season_POC22061_2026_07_07_13_37_02_train": {
+  "regime": "post",
+  "timestamp": "2026_07_07_13_37_02",
+  "episodes": 15,
+  "frames": 75725,
+  "complete": true
+ },
+ "season_POC22061_2026_07_07_19_15_51_train": {
+  "regime": "post",
+  "timestamp": "2026_07_07_19_15_51",
+  "episodes": 18,
+  "frames": 85244,
+  "complete": true
+ },
+ "season_POC22061_2026_07_08_10_10_59_train": {
+  "regime": "post",
+  "timestamp": "2026_07_08_10_10_59",
+  "episodes": 17,
+  "frames": 83068,
+  "complete": true
+ },
+ "season_POC22061_2026_07_08_11_10_11_train": {
+  "regime": "post",
+  "timestamp": "2026_07_08_11_10_11",
+  "episodes": 8,
+  "frames": 62914,
+  "complete": true
+ },
+ "season_POC22061_2026_07_08_13_37_45_train": {
+  "regime": "post",
+  "timestamp": "2026_07_08_13_37_45",
+  "episodes": 20,
+  "frames": 97414,
+  "complete": true
+ },
+ "season_POC22061_2026_07_08_16_01_38_train": {
+  "regime": "post",
+  "timestamp": "2026_07_08_16_01_38",
+  "episodes": 15,
+  "frames": 113116,
+  "complete": true
+ },
+ "season_POC22061_2026_07_08_17_17_40_train": {
+  "regime": "post",
+  "timestamp": "2026_07_08_17_17_40",
+  "episodes": 11,
+  "frames": 46381,
+  "complete": true
+ },
+ "season_POC22061_2026_07_08_19_05_30_train": {
+  "regime": "post",
+  "timestamp": "2026_07_08_19_05_30",
+  "episodes": 20,
+  "frames": 93944,
+  "complete": true
+ },
+ "season_POC22061_2026_07_09_10_08_39_train": {
+  "regime": "post",
+  "timestamp": "2026_07_09_10_08_39",
+  "episodes": 16,
+  "frames": 78659,
+  "complete": true
+ },
+ "season_POC22061_2026_07_09_16_23_46_train": {
+  "regime": "post",
+  "timestamp": "2026_07_09_16_23_46",
+  "episodes": 14,
+  "frames": 91338,
+  "complete": true
+ },
+ "season_POC22061_2026_07_09_19_08_15_train": {
+  "regime": "post",
+  "timestamp": "2026_07_09_19_08_15",
+  "episodes": 26,
+  "frames": 124702,
+  "complete": true
+ },
+ "season_POC22061_2026_07_10_10_04_17_train": {
+  "regime": "post",
+  "timestamp": "2026_07_10_10_04_17",
+  "episodes": 17,
+  "frames": 84337,
+  "complete": true
+ },
+ "season_POC22061_2026_07_10_11_05_01_train": {
+  "regime": "post",
+  "timestamp": "2026_07_10_11_05_01",
+  "episodes": 7,
+  "frames": 47511,
+  "complete": true
+ },
+ "season_POC22061_2026_07_10_15_21_08_train": {
+  "regime": "post",
+  "timestamp": "2026_07_10_15_21_08",
+  "episodes": 25,
+  "frames": 155207,
+  "complete": true
+ },
+ "season_POC22061_2026_07_10_17_05_30_train": {
+  "regime": "post",
+  "timestamp": "2026_07_10_17_05_30",
+  "episodes": 13,
+  "frames": 57521,
+  "complete": true
+ },
+ "season_POC22061_2026_07_10_19_07_06_train": {
+  "regime": "post",
+  "timestamp": "2026_07_10_19_07_06",
+  "episodes": 11,
+  "frames": 64952,
+  "complete": true
+ },
+ "season_POC22061_2026_07_11_10_07_34_train": {
+  "regime": "post",
+  "timestamp": "2026_07_11_10_07_34",
+  "episodes": 22,
+  "frames": 101964,
+  "complete": true
+ },
+ "season_POC22061_2026_07_11_13_34_49_train": {
+  "regime": "post",
+  "timestamp": "2026_07_11_13_34_49",
+  "episodes": 12,
+  "frames": 71786,
+  "complete": true
+ },
+ "season_POC22061_2026_07_12_10_06_51_train": {
+  "regime": "post",
+  "timestamp": "2026_07_12_10_06_51",
+  "episodes": 23,
+  "frames": 112351,
+  "complete": true
+ },
+ "season_POC22061_2026_07_12_13_50_31_train": {
+  "regime": "post",
+  "timestamp": "2026_07_12_13_50_31",
+  "episodes": 22,
+  "frames": 102557,
+  "complete": true
+ },
+ "season_POC22061_2026_07_12_17_04_27_train": {
+  "regime": "post",
+  "timestamp": "2026_07_12_17_04_27",
+  "episodes": 10,
+  "frames": 45939,
+  "complete": true
+ },
+ "season_POC22061_2026_07_12_19_06_50_train": {
+  "regime": "post",
+  "timestamp": "2026_07_12_19_06_50",
+  "episodes": 18,
+  "frames": 112386,
+  "complete": true
+ },
+ "season_POC22061_2026_07_13_14_31_37_train": {
+  "regime": "post",
+  "timestamp": "2026_07_13_14_31_37",
+  "episodes": 1,
+  "frames": 4530,
+  "complete": true
+ },
+ "season_POC22061_2026_07_13_14_54_37_train": {
+  "regime": "post",
+  "timestamp": "2026_07_13_14_54_37",
+  "episodes": 15,
+  "frames": 68267,
+  "complete": true
+ },
+ "season_POC22061_2026_07_13_19_20_33_train": {
+  "regime": "post",
+  "timestamp": "2026_07_13_19_20_33",
+  "episodes": 8,
+  "frames": 36401,
+  "complete": true
+ },
+ "season_POC22061_2026_07_13_19_56_06_train": {
+  "regime": "post",
+  "timestamp": "2026_07_13_19_56_06",
+  "episodes": 7,
+  "frames": 30664,
+  "complete": true
+ },
+ "season_POC22061_2026_07_13_20_50_09_train": {
+  "regime": "post",
+  "timestamp": "2026_07_13_20_50_09",
+  "episodes": 3,
+  "frames": 15677,
+  "complete": true
+ }
+}

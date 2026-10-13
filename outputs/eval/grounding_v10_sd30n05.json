@@ -1,0 +1,10 @@
+{
+ "ckpt": "outputs/ckpt/best_v10_sd30n05.pt",
+ "pairs": 112,
+ "separation_rad": 0.0914003789158804,
+ "control_err_rad": 0.019164160683950677,
+ "swapped_vs_state_traj_rad": 0.060798293711351495,
+ "swapped_vs_image_traj_rad": 0.04522241318565128,
+ "visual_pull": 0.45551379021873045,
+ "vision_win_rate": 0.7589285714285714
+}

@@ -1,0 +1,42 @@
+# --- Data & model artifacts (large; never committed) ---
+/data/*
+!/data/fold_labels_human.json
+/outputs/*
+!/outputs/README.md
+!/outputs/norm_stats.json
+!/outputs/fold_labels_auto.json
+!/outputs/regime_labels.json
+!/outputs/regime_labels.csv
+!/outputs/eval/
+/outputs/eval/*
+!/outputs/eval/*.json
+/checkpoints/
+wandb/
+*.parquet
+*.safetensors
+*.ckpt
+*.pt
+*.tar.zst
+*.lmdb
+
+# Videos: only the curated, compressed web clips of the project page are tracked
+*.mp4
+!/docs/assets/media/*.mp4
+
+# --- Third-party material (obtain from the challenge organizers) ---
+/inf_code_*/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.env
+.cache/
+
+# --- Secrets ---
+*credential*
+*Credential*
+*.pem
+*.key

@@ -1,0 +1,10 @@
+{
+ "ckpt": "outputs/ckpt/best_v7_fullobs.pt",
+ "pairs": 112,
+ "separation_rad": 0.0914003789158804,
+ "control_err_rad": 0.019647823954333683,
+ "swapped_vs_state_traj_rad": 0.044364453526213765,
+ "swapped_vs_image_traj_rad": 0.06606871380271125,
+ "visual_pull": 0.27042152193513147,
+ "vision_win_rate": 0.11607142857142858
+}

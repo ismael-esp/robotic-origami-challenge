@@ -1,0 +1,10 @@
+{
+ "ckpt": "outputs/ckpt/best_v10_sd50n10.pt",
+ "pairs": 112,
+ "separation_rad": 0.0914003789158804,
+ "control_err_rad": 0.022865316082191254,
+ "swapped_vs_state_traj_rad": 0.07531835957031165,
+ "swapped_vs_image_traj_rad": 0.03427730592167271,
+ "visual_pull": 0.5738821229219971,
+ "vision_win_rate": 0.9732142857142857
+}

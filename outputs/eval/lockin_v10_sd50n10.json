@@ -1,0 +1,41 @@
+{
+ "ckpt": "outputs/ckpt/best_v10_sd50n10.pt",
+ "vision": "frozen",
+ "episodes": 4,
+ "seconds": 60.0,
+ "results": {
+  "async": {
+   "dip_saturation_frac": {
+    "left_middle_DIP": 0.0,
+    "left_ring_DIP": 0.0,
+    "left_pinky_DIP": 0.0,
+    "right_pinky_DIP": 0.0
+   },
+   "dip_saturation_mean": 0.0,
+   "mean_hand_flexion_rad": 0.12553425133228302,
+   "left_arm_drift_rad": 0.3280581831932068
+  },
+  "sync45": {
+   "dip_saturation_frac": {
+    "left_middle_DIP": 0.0,
+    "left_ring_DIP": 0.0,
+    "left_pinky_DIP": 0.0,
+    "right_pinky_DIP": 0.0
+   },
+   "dip_saturation_mean": 0.0,
+   "mean_hand_flexion_rad": 0.2674992084503174,
+   "left_arm_drift_rad": 0.3061082661151886
+  },
+  "sync15": {
+   "dip_saturation_frac": {
+    "left_middle_DIP": 0.0,
+    "left_ring_DIP": 0.0,
+    "left_pinky_DIP": 0.0,
+    "right_pinky_DIP": 0.0
+   },
+   "dip_saturation_mean": 0.0,
+   "mean_hand_flexion_rad": 0.1269509196281433,
+   "left_arm_drift_rad": 0.327555775642395
+  }
+ }
+}

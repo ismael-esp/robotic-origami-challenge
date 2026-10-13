@@ -1,0 +1,55 @@
+{
+  "ckpt": "outputs/ckpt/best_v9_finetune.pt",
+  "step": 19000,
+  "val_l1": 0.034997135400772095,
+  "n_cams": 4,
+  "n_tempos": 3,
+  "tempos": [
+    1.0,
+    1.25,
+    1.5
+  ],
+  "serve_contract": "v2",
+  "three_cam": false,
+  "corpus": {
+    "lmdb_path": "data/frames_224.lmdb",
+    "data_root": "data/Robotic_Origami_Challenge",
+    "norm_path": "outputs/norm_stats_v9_union.json",
+    "labels_path": "outputs/fold_labels_auto.json",
+    "split_path": "outputs/norm_stats.json"
+  },
+  "protocol": "eval_gate_battery v1 (2026-08-04; v9 corpus-aware)",
+  "offline_serve_matched_l1": {
+    "tempo0": {
+      "norm": 0.04426,
+      "rad": 0.01669
+    },
+    "tempo1": {
+      "norm": 0.0484,
+      "rad": 0.01848
+    },
+    "tempo2": {
+      "norm": 0.052,
+      "rad": 0.02003
+    }
+  },
+  "obedience": {
+    "mean_disp_per_tempo": {
+      "0": 0.0025309524204809954,
+      "1": 0.003091607577953255,
+      "2": 0.0035021835233904615
+    },
+    "tempo1_ratio": 1.2215,
+    "tempo1_pass": true,
+    "tempo1_accept": [
+      1.15,
+      1.35
+    ],
+    "tempo2_ratio": 1.3837,
+    "tempo2_pass": true,
+    "tempo2_accept": [
+      1.3,
+      1.6
+    ]
+  }
+}

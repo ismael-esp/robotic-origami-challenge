@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FoldingACT: Robotic Origami</title>
+<meta name="description" content="FoldingACT: an end-to-end multimodal imitation-learning policy for a bimanual robot with dexterous hands folding a paper airplane. Ten model versions, simulation mirroring, real-robot tests and failure analysis. By Ismael Espinoza.">
+<meta property="og:title" content="FoldingACT: Teaching two dexterous hands to fold a paper airplane">
+<meta property="og:description" content="Multimodal ACT policy (vision + tactile + proprioception) for the IROS 2026 Robotic Origami Challenge: design, ten iterations, simulation, real-robot deployment and failure analysis.">
+<meta property="og:image" content="assets/media/sim_mirror_ep2_4x_poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 16 30 4 20 28 15 18Z' fill='%23c8321f'/%3E%3Cpath d='M15 18 30 4' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{const t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16 30 4 20 28 15 18Z" fill="var(--crease)"/><path d="M15 18 30 4" stroke="var(--paper)" stroke-width="1.5"/></svg>FoldingACT</a>
+    <nav class="toc" aria-label="Sections">
+      <a href="#task">Task</a><a href="#data">Data</a><a href="#model">Model</a><a href="#iterations">Iterations</a>
+      <a href="#sim">Simulation</a><a href="#robot">Real robot</a><a href="#fix">Diagnosis &amp; fix</a><a href="#deploy">Deployment</a><a href="#lessons">Lessons</a>
+    </nav>
+    <button class="theme-btn" id="theme" type="button" aria-label="Toggle dark mode">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-labelledby="h-title">
+  <h1 id="h-title">Teaching two dexterous hands to fold a paper airplane</h1>
+  <p class="lede">FoldingACT is an end-to-end visuomotor policy for the IROS 2026 Robotic Origami Challenge. A bimanual robot with two 22-joint Sharpa hands must fold a paper airplane in six folds, from four cameras, ten fingertip tactile sensors and 65 joints of proprioception. I built the whole stack: data pipeline, a multimodal action-chunking transformer, ten trained versions, an Isaac Sim mirror, and a hardened Docker inference service that the organizers ran on their real robot.</p>
+  <div class="byline">
+    <span><strong>Ismael Espinoza</strong></span>
+    <span>July–September 2026</span>
+    <a class="btn primary" href="https://github.com/ismael-esp/robotic-origami-challenge">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.6 0 0 3.6 0 8c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.4.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.6 3.9.3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4C13.7 14.5 16 11.5 16 8c0-4.4-3.6-8-8-8z"/></svg>
+      Source code</a>
+    <a class="btn" href="#robot">Real-robot results</a>
+  </div>
+
+  <figure class="hero-media" style="margin-bottom:0">
+    <video src="assets/media/sim_mirror_ep2_4x.mp4" poster="assets/media/sim_mirror_ep2_4x_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Left: real robot demonstration. Right: the same robot in Isaac Sim executing the policy's predicted joint targets."></video>
+    <figcaption>Left: a held-out human demonstration. Right: the robot model in Isaac Sim executing what FoldingACT predicts from the left side's cameras, tactile and joint state, re-planned every frame. Played at 4× speed.</figcaption>
+  </figure>
+
+  <div class="facts">
+    <div class="fact"><b>65-D</b><span>joint targets, 45-step chunks (1.5 s)</span></div>
+    <div class="fact"><b>849 demos</b><span>45 h of teleoperation, 398 GB downloaded</span></div>
+    <div class="fact"><b>10 versions</b><span>v1 → v10 in ten weeks on 2× RTX 5070 Ti</span></div>
+    <div class="fact"><b>0.0100 rad</b><span>mean simulated joint error (v6 mirror)</span></div>
+    <div class="fact"><b>0 folds</b><span>completed in two real-robot sessions, root-caused below</span></div>
+  </div>
+</section>
+
+<!-- ================= TASK ================= -->
+<section id="task" aria-labelledby="h-task">
+  <span class="sec-num">1 · The task</span>
+  <h2 id="h-task">Six folds, under ten minutes, judged by an origami master</h2>
+  <div class="prose">
+    <p>Each attempt starts from a flat 15 × 15 cm sheet. An Origami Grand Master from the Nippon Origami Association judges pass or fail on whether the result is a recognizable plane; faster passes rank higher. Teams don't bring hardware: the organizers run every submission remotely on their own robot. That meant no robot in the loop for development, and evaluation only through a Docker image they execute.</p>
+  </div>
+  <div class="folds">
+    <div class="fold-strip" id="fold-strip"></div>
+    <p class="small" style="margin-top:8px">A human-teleoperated demonstration from the training set, head camera, cropped to the workspace. Stage boundaries are my hand labels. They seeded the automatic labelling of all 582 training episodes.</p>
+  </div>
+</section>
+
+<!-- ================= DATA ================= -->
+<section id="data" aria-labelledby="h-data">
+  <span class="sec-num">2 · Data</span>
+  <h2 id="h-data">Six synchronized streams, 30 Hz, three-minute episodes</h2>
+  <div class="cams" id="cams"></div>
+  <div class="grid-2" style="margin-top:28px">
+    <div class="prose">
+      <p>The dataset is a gated LeRobot v3.0 corpus recorded by teleoperation. Every 33 ms it holds four RGB views, two tactile image streams, 10 fingertip 6-axis force/torque readings, 58 joint torques and the 65-D joint state and action. Episodes run 131–314 s (mean 176 s, ~5,300 control steps). That horizon is the main modelling challenge: an action-chunking policy must keep its place over hundreds of chunks.</p>
+      <p><b>Data engineering that mattered.</b> I decoded the frames into a 14.8 M-key LMDB (94 GB). That took the loader from 34 to 1,430 samples/s (42×), so training became GPU-bound. Mid-collection the task itself changed (printed guide lines, folding flat on the table instead of in the air). I found the shift and trained only on the 582 post-change episodes. A DTW template transfer from two hand-labelled demos labelled all six fold stages automatically (leave-one-out boundary error 2.6–2.8 s).</p>
+    </div>
+    <div>
+      <div class="table-wrap" style="margin-top:0">
+        <table>
+          <thead><tr><th>Split</th><th class="num">Seasons</th><th class="num">Episodes</th><th class="num">Hours</th></tr></thead>
+          <tbody>
+            <tr><td>Downloaded (stratified sample)</td><td class="num">60</td><td class="num">849</td><td class="num">45.2</td></tr>
+            <tr class="hl"><td>Training regime (post-change)</td><td class="num">38</td><td class="num">582</td><td class="num">28.5</td></tr>
+            <tr><td>&nbsp;&nbsp;train / val</td><td class="num"></td><td class="num">524 / 58</td><td class="num"></td></tr>
+            <tr><td>Competition-paper finetune set (v9+)</td><td class="num">38</td><td class="num">610</td><td class="num">≈25.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure style="margin-top:0"><img src="assets/img/tactile_tiles.jpg" alt="Ten tactile fingertip marker pads in a 2 by 5 grid" loading="lazy" style="background:#222"><figcaption>The ten fingertip marker pads (tactile_raw), cropped into the tiles fed to the tactile encoder.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODEL ================= -->
+<section id="model" aria-labelledby="h-model">
+  <span class="sec-num">3 · Model</span>
+  <h2 id="h-model">FoldingACT: a multimodal action-chunking transformer</h2>
+  <div class="prose">
+    <p>Reinforcement learning was ruled out on day one: there is no tractable reward for deformable paper and no task simulator. I chose imitation learning with an <a href="https://arxiv.org/abs/2304.13705">ACT</a>-style conditional VAE. Every modality enters one transformer as tokens. The decoder emits 45 future joint targets at once, which smooths the motion and cuts the number of decisions over a three-minute task.</p>
+  </div>
+  <figure class="arch panel" id="arch" style="padding:16px"></figure>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Component</th><th>Design</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Vision</td><td>DINOv3 ViT-S/16, fine-tuned, gradient-checkpointed. One trunk shared by the two head views, one by the two wrist views; 4 × 196 tokens</td><td>Strong dense features at 21.6 M params per trunk fit the 16 GB budget</td></tr>
+        <tr><td>Touch</td><td>Sparsh ViT-B on 10 fingertip tiles (temporal pair 167 ms apart), contact gate, decoder cross-attention</td><td>Folding is contact-rich: tactile cut validation error 12.8 % (v2) and the ablation gap grew to 44.7 % (v3)</td></tr>
+        <tr><td>Proprioception</td><td>153-D: joint state 65 + joint torque 58 + fingertip forces 30</td><td>Torque and force carry pinch and press information that the cameras can't see</td></tr>
+        <tr><td>Fold phase</td><td>6-way stage token. At serve time a FoldTracker sets it, with dwell, sustain and wall-clock budgets; v8 added a separate causal-TCN StageNet</td><td>Disambiguates visually similar moments in a long, repetitive task</td></tr>
+        <tr><td>Tempo</td><td>Tempo token for 1.0× / 1.25× / 1.5×, trained by contact-aware time warping</td><td>Faster passes rank higher</td></tr>
+        <tr><td>Transformer</td><td>d=512, 8 heads, 4 encoder / 3 decoder layers, 32-D latent (z = 0 at inference), masked L1 + KL</td><td>ACT recipe, deepened after a review found the 1-layer decoder underbuilt</td></tr>
+        <tr><td>Training</td><td>AdamW, cosine schedule, bf16, DDP on 2 GPUs. Serve-matched corruption: tactile dropout, torque dropout, observation noise, 0–4 frame latency jitter</td><td>Train on exactly what the server will see</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <figure class="plain"><img src="assets/img/dinov3_features.jpg" alt="DINOv3 feature magnitude and PCA maps for head and wrist cameras" loading="lazy"><figcaption>What the fine-tuned vision trunk responds to. Feature magnitude and a 3-component PCA of the DINOv3 patch tokens, for a head view and a wrist view. The paper and the fingertips separate cleanly from the table and the robot body.</figcaption></figure>
+</section>
+
+<!-- ================= ITERATIONS ================= -->
+<section id="iterations" aria-labelledby="h-iter">
+  <span class="sec-num">4 · Iterations</span>
+  <h2 id="h-iter">Ten versions, each gated before it shipped</h2>
+  <div class="prose"><p>Every candidate went through a fixed gate battery before it could replace the submission. The battery covered held-out validation L1, live-server replay of three held-out episodes through the actual serving stack, closed-loop stability proxies and tempo obedience. From v9 it added visual grounding and closed-loop drift.</p></div>
+  <div class="grid-2">
+    <ol class="timeline" id="timeline"></ol>
+    <div>
+      <h3 style="margin-top:0">Live-server replay error</h3>
+      <p class="small">Mean |predicted − demonstrated| joint target over 3 held-out episodes (15,773 frames), fed through the real policy server with real tactile input. Lower is better.</p>
+      <div class="chart" id="c-replay"></div>
+      <h3>Training curves</h3>
+      <p class="small">Serve-matched validation L1 (normalized) every 1,000 steps. v9 and v10 are finetunes on a new paper corpus, so their numbers aren't comparable with the from-scratch runs.</p>
+      <div class="seg" role="group" aria-label="Training run family" id="curve-seg">
+        <button type="button" aria-pressed="true" data-k="scratch">From scratch · 60k steps</button>
+        <button type="button" aria-pressed="false" data-k="ft">Finetunes · v9, v10</button>
+      </div>
+      <div class="chart" id="c-curves"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIM ================= -->
+<section id="sim" aria-labelledby="h-sim">
+  <span class="sec-num">5 · Simulation</span>
+  <h2 id="h-sim">An Isaac Sim mirror of the real robot</h2>
+  <div class="prose">
+    <p>No task simulator exists for this challenge, and simulating paper is out of reach anyway. So I built a <em>kinematic mirror</em>: held-out demonstrations stream through the live policy server, and the predicted joint targets drive the robot's USD model in Isaac Sim 5.1, filmed by a virtual head camera that I calibrated against the real one. It can't show a fold succeed, but it exercises the exact deployment path and makes motion errors visible at a glance.</p>
+  </div>
+  <div class="grid-2">
+    <figure><video src="assets/media/sim_mirror_ep5_4x.mp4" poster="assets/media/sim_mirror_ep5_4x_poster.jpg" controls muted loop playsinline preload="none"></video><figcaption>Held-out episode 5 (187 s, 4× speed): real demonstration and v6 mirror.</figcaption></figure>
+    <div>
+      <h3 style="margin-top:24px">Mirror tracking error by version</h3>
+      <p class="small">Mean |pred − demo| over all 65 joints, averaged over 3 held-out episodes (radians).</p>
+      <div class="chart" id="c-mirror"></div>
+    </div>
+  </div>
+  <figure class="plain"><img src="assets/img/mirror_error_timeline_ep5.png" alt="Per-frame mirror error over episode 5 with fold stages shaded" loading="lazy"><figcaption>Per-frame error across episode 5, with the six fold stages shaded. The serve-matched versions (v5b, v6) sit below v4 for 96 % of the episode. The spikes cluster at stage transitions and at the hand-off to the final refine.</figcaption></figure>
+
+  <h3>Passing the organizers' safety checker: 308 violations → 0</h3>
+  <div class="grid-2">
+    <div class="prose">
+      <p>Before any live run, the organizers replay a submission against a URDF "Shadow" checker. v8 came back with 308 violations from two independent mechanisms:</p>
+      <ul>
+        <li>281 finger <code>lower_limit</code> violations. The training data hard-clips finger joints at exactly 0, and predictions straddled that floor.</li>
+        <li>27 velocity jumps, all at chunk boundaries.</li>
+      </ul>
+      <p>I reproduced the checker locally, then added a per-joint clamp and a 10-step continuity ramp on the first action. Together they remove every violation and improved one-step replay error (0.0246 → 0.0216). The first attempt (v8.1) widened a finger ceiling and failed live with 210 new violations once the fingers curled. Since then every bounds change is validated on both a hands-open and a hands-flexed fixture.</p>
+    </div>
+    <div class="chart" id="c-shadow"></div>
+  </div>
+</section>
+
+<!-- ================= REAL ROBOT ================= -->
+<section id="robot" aria-labelledby="h-robot">
+  <span class="sec-num">6 · Real robot</span>
+  <h2 id="h-robot">Two live sessions, no completed fold</h2>
+  <div class="prose">
+    <p>The organizers ran the v9 policy on their robot twice. Neither session folded the paper. The hands moved purposefully for a few seconds, then slowed, closed into fists and pressed the sheet into a tent until a protective stop or the operator ended the episode. These are the organizers' head-camera recordings, cropped, at 2× speed.</p>
+  </div>
+  <div class="grid-2">
+    <figure><video src="assets/media/live_20260929_ep4_2x.mp4" poster="assets/media/live_20260929_ep4_2x_poster.jpg" controls muted playsinline preload="none"></video><figcaption>Session 2 (2026-09-29), episode 4, sync mode, 65 s. The fingers close and stay closed.</figcaption></figure>
+    <figure><video src="assets/media/live_20260901_ep7_2x.mp4" poster="assets/media/live_20260901_ep7_2x_poster.jpg" controls muted playsinline preload="none"></video><figcaption>Session 1 (2026-09-01), episode 7, 42 s. The paper is pushed aside while the hands keep folding air.</figcaption></figure>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Session</th><th>Policy</th><th class="num">Episodes run</th><th class="num">Duration</th><th>How episodes ended</th><th>Folds</th></tr></thead>
+      <tbody>
+        <tr><td>2026-09-01</td><td>v9.2 · sync</td><td class="num">10 (+5 not started)</td><td class="num">11–43 s</td><td>6 protective stops, 4 operator stops</td><td><span class="tag fail">0</span></td></tr>
+        <tr><td>2026-09-29</td><td>v9.2 · async ×3, sync ×2</td><td class="num">5</td><td class="num">36–65 s</td><td>4 protective stops, 1 operator stop</td><td><span class="tag fail">0</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>The finger that locked</h3>
+  <p class="prose">The logs show the mechanism clearly. Pick an episode below. The left middle-finger DIP joint is commanded to the joint ceiling and held there, far beyond anything in the demonstrations; the measured angle even settles above the command. In the long session-2 episodes it is pinned for 84–96 % of all steps. The effect is progressive, which is why the shorter session-1 episodes looked different.</p>
+  <div class="seg" role="group" aria-label="Live episode" id="ep-seg"></div>
+  <div class="chart" id="c-dip"></div>
+  <div class="chart" id="c-sat" style="margin-top:20px"></div>
+  <details class="data"><summary>Episode table</summary><div class="table-wrap"><table id="t-eps"></table></div></details>
+</section>
+
+<!-- ================= FIX ================= -->
+<section id="fix" aria-labelledby="h-fix">
+  <span class="sec-num">7 · Diagnosis &amp; fix</span>
+  <h2 id="h-fix">The policy had learned to replay its own state</h2>
+  <div class="grid-2">
+    <div class="prose">
+      <p>In the demonstrations, the commanded action is roughly one servo step ahead of the measured state (correlation 0.984). So <code>action ≈ f(state)</code> is a near-perfect solution to the training loss, and vision gets demoted. This is the classic <em>causal confusion</em> failure of behaviour cloning. On the robot, the command sat 0.013 rad from the measured state (0.021 in demos), so small errors integrated with no visual restoring force, and any posture reached was held.</p>
+      <p>I measured it directly with two new gates:</p>
+      <ul>
+        <li><b>Visual grounding</b> builds 112 observations where the camera and the joint state disagree, and measures whose trajectory the policy follows.</li>
+        <li><b>Closed-loop drift</b> rolls the policy against a fitted first-order model of the robot.</li>
+      </ul>
+      <p>v9 followed the joint state in 94 % of conflicts.</p>
+      <p>I ruled out the other suspects one by one with measurements:</p>
+      <ul>
+        <li>sync vs. async execution: both locked;</li>
+        <li>the organizers' 224 → 480 px camera patch: 0.0023 rad;</li>
+        <li>colour cast in the finetune corpus: +1.6 %;</li>
+        <li>serving latency: 36–76 ms with zero errors.</li>
+      </ul>
+    </div>
+    <div class="callout" style="margin-top:0">
+      <p><b>The v10 fix.</b> I finetuned v9 with the joint state <em>masked on 50 % of samples</em> (a sentinel outside the normalized range) and 0.10 rad of noise on the rest, keeping clean targets. The images now have to carry the trajectory.</p>
+      <p>The gains grow with augmentation strength: a milder arm (30 % / 0.05 rad) lands halfway. So the effect comes from the shortcut-breaking, not from anything else in the recipe.</p>
+      <p class="small">v10 was the final submission. It has not been run on the robot, so its real-world effect is unmeasured.</p>
+    </div>
+  </div>
+  <h3>v9 (failed live) vs. v10 (final submission)</h3>
+  <div class="legend" aria-hidden="true"><span><i class="dot" style="background:var(--muted-series)"></i>v9</span><span><i class="dot" style="background:var(--s1)"></i>v10, better</span><span><i class="dot" style="background:var(--critical)"></i>v10, worse</span></div>
+  <div class="chart" id="c-v10"></div>
+  <p class="small">The cost is honest and expected. Once it can't copy the state, v10 reproduces demonstrated actions less precisely in teacher-forced evaluation. But that is the same metric on which v9 looked best before failing twice. Every closed-loop and grounding measure moves the right way.</p>
+</section>
+
+<!-- ================= DEPLOY ================= -->
+<section id="deploy" aria-labelledby="h-deploy">
+  <span class="sec-num">8 · Deployment</span>
+  <h2 id="h-deploy">A sealed inference service the organizers can run blind</h2>
+  <div class="grid-2">
+    <div class="prose">
+      <p>The submission is a self-contained Docker image, exported as a <code>.tar.zst</code> with a sha256. Their sandbox runs it read-only, non-root and offline, so it has to work first time with no debugging access. It dials out as a Zenoh client and answers <code>metadata</code>, <code>reset</code> and <code>infer</code> queries. Each <code>infer</code> takes the 4 camera images, tactile, torque and joint state, and returns a float32 [45 × 65] chunk of absolute joint targets.</p>
+      <p>The interface changed twice during the challenge: websocket → Zenoh, then sync → async execution. I reworked the server, the transport equivalence tests and the submission builder each time.</p>
+    </div>
+    <div class="table-wrap" style="margin-top:0">
+      <table>
+        <tbody>
+          <tr><th>Inference latency (v10, organizer validator)</th><td class="num">median 45.8 ms · max 73.6 ms</td></tr>
+          <tr><th>Latency on the real robot</th><td class="num">36–76 ms, 0 errors</td></tr>
+          <tr><th>Cold start</th><td class="num">≈ 35 s</td></tr>
+          <tr><th>Runtime</th><td class="num">1 GPU ≥ 3.5 GB, ≤ 16 GB RAM</td></tr>
+          <tr><th>Sandbox</th><td>read-only rootfs, UID 65532, cap-drop ALL, no network, digest-pinned base</td></tr>
+          <tr><th>Robustness checks</th><td>reset determinism, SIGTERM exit in 1.2 s, fail-fast without config, 0 Shadow violations</td></tr>
+          <tr><th>Serving safety</th><td>per-joint clamp, continuity ramp, tactile-pair interpolation, confidence-gated fold budget</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LESSONS ================= -->
+<section id="lessons" aria-labelledby="h-lessons">
+  <span class="sec-num">9 · Lessons</span>
+  <h2 id="h-lessons">What I would tell myself on day one</h2>
+  <ol class="lessons">
+    <li><b>Teacher-forced metrics can certify a policy that fails closed-loop.</b><span>v9 had the best offline error of any version (0.0143 rad) and failed both live sessions, because every gate fed it demo states and demo images.</span></li>
+    <li><b>Measure modality authority directly.</b><span>With absolute-position targets and action ≈ state, the shortcut is the default. A 112-pair conflict test exposed it (vision won 6 %); masking the state fixed it (97 %).</span></li>
+    <li><b>Offline closed-loop tests must not leak the oracle.</b><span>Feeding demo images while the simulated robot drifts supplies exactly the correction the real robot never gets. It made async look best offline; async then locked the hands live.</span></li>
+    <li><b>Train on exactly what you serve.</b><span>Serve-matched corruption (tactile/torque dropout, latency jitter, observation noise) took replay error from 0.0254 (v4) to 0.0159 (v6).</span></li>
+    <li><b>Validate limits on data that actually reaches them.</b><span>v8.1 passed on an open-hand fixture and failed live once the fingers curled. Two fixtures now gate every bounds change.</span></li>
+    <li><b>Make serving logic independent of call rate.</b><span>Step-count budgets expired 3× late at 10 Hz, and a tactile temporal pair collapsed to zero at 0.6 Hz. Wall-clock budgets and interpolation fixed both.</span></li>
+    <li><b>Check alignment before trusting a discrepancy.</b><span>An apparent 0.034 rad camera effect was misaligned frames: LeRobot v3 concatenates episodes into one video file. The true effect was 0.0023.</span></li>
+    <li><b>Long data jobs need bounded memory and isolation.</b><span>An unbounded futures queue reached about 39 GB and took the desktop down. Bounded in-flight windows and detached systemd units fixed it.</span></li>
+  </ol>
+</section>
+
+<section id="code" aria-labelledby="h-code">
+  <span class="sec-num">10 · Code</span>
+  <h2 id="h-code">Repository map</h2>
+<pre>policy/
+  model/        FoldingACT (folding_act.py), v3 decoder with tactile cross-attention, StageNet
+  data/         LeRobot v3 → LMDB loaders, fold auto-labelling, retiming, normalization stats
+  serve/        Zenoh policy service, FoldTracker, replay / transport-equivalence tests
+  sim/          Isaac Sim mirror (mirror_episode.py), joint-order mapping
+  train_full.py           DDP training with serve-matched corruption
+  eval_gate_battery.py    offline gates · eval_visual_grounding.py · eval_closed_loop.py
+scripts/        dataset download + predecode, clamp-bound fitting, submission image builder
+docs/           this page, results summary, data notes</pre>
+  <p class="small">The organizers' inference kit and robot description files are not redistributed here. The dataset is gated on Hugging Face (<code>SharpaIT/Robotic_Origami_Challenge</code>).</p>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>FoldingACT · Ismael Espinoza · 2026</span>
+    <span>Robot, dataset and live evaluation provided by the IROS 2026 Robotic Origami Challenge organizers.</span>
+  </div>
+</footer>
+
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/page.js"></script>
+</body>
+</html>
