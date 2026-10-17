@@ -10,6 +10,7 @@
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue?style=flat-square)](docs/getting_started.md)
 [![PyTorch cu128](https://img.shields.io/badge/PyTorch-cu128-ee4c2c?style=flat-square&logo=pytorch&logoColor=white)](docs/getting_started.md)
 [![Isaac Sim 5.1](https://img.shields.io/badge/Isaac%20Sim-5.1-76b900?style=flat-square)](docs/getting_started.md)
+[![lint](https://img.shields.io/github/actions/workflow/status/ismael-esp/robotic-origami-challenge/lint.yml?branch=master&label=lint&style=flat-square)](https://github.com/ismael-esp/robotic-origami-challenge/actions/workflows/lint.yml)
 
 [**Project page**](https://ismael-esp.github.io/robotic-origami-challenge/) · [**Results**](docs/RESULTS.md) · [**Getting started**](docs/getting_started.md) · [**Challenge spec**](docs/challenge_spec.md)
 
