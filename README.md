@@ -109,3 +109,7 @@ evaluation and serving.
 
 **Ismael Espinoza**. Robot, dataset and live evaluation were provided by the IROS 2026
 Robotic Origami Challenge organizers.
+
+---
+
+Developed in 2026 by Ismael Espinoza Jaramillo (PhD candidate, Kyung Hee University) in the lab's private workspace and published here as a clean snapshot in Oct 2026 · [ismael-esp.github.io](https://ismael-esp.github.io) · [github.com/ismael-esp](https://github.com/ismael-esp)
