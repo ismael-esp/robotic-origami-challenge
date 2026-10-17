@@ -18,7 +18,7 @@
 
 <img src="docs/assets/media/hero_mirror.gif" width="720" alt="Real robot demonstration next to the policy's predicted motion executed in Isaac Sim">
 
-<sub>Left: a held-out teleoperated demonstration. Right: the robot in Isaac Sim executing FoldingACT's predicted joint targets.</sub>
+<sub>Left: a held-out teleoperated demonstration from the <a href="https://huggingface.co/datasets/SharpaIT/Robotic_Origami_Challenge">SharpaIT Robotic Origami Challenge dataset</a> (CC BY 4.0). Right: the robot in Isaac Sim executing FoldingACT's predicted joint targets.</sub>
 
 </div>
 
@@ -105,6 +105,14 @@ The dataset is gated on Hugging Face (`SharpaIT/Robotic_Origami_Challenge`). The
 inference kit and robot description files are not redistributed here.
 [`docs/getting_started.md`](docs/getting_started.md) covers access, preprocessing, training,
 evaluation and serving.
+
+## Third-party data and models
+
+- **Dataset:** [SharpaIT/Robotic_Origami_Challenge](https://huggingface.co/datasets/SharpaIT/Robotic_Origami_Challenge),
+  CC BY 4.0. The demonstration frames in the hero GIF and on the project page come from it.
+- **Vision encoder:** DINOv3 (Meta), weights under the DINOv3 License.
+- **Tactile encoder:** Sparsh (Meta), weights under CC BY-NC 4.0.
+- The organizers' inference kit and robot description files are not redistributed here.
 
 ## Author
 
