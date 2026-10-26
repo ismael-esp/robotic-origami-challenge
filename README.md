@@ -46,11 +46,15 @@ full stack:
   0.0100 rad.
 - **Safety-checker compliant.** A per-joint clamp and a first-step continuity ramp took the
   organizers' URDF "Shadow" check from 308 violations to 0.
-- **An honest real-robot failure, root-caused.** In two live sessions the v9 policy completed
+- **Real-robot result, root-caused.** In two remote sessions the v9 policy completed
   no fold. Log analysis showed causal confusion: the policy followed its own joint state in
   94 % of state/vision conflicts, so finger errors integrated until the hands locked. The
   final v10 breaks that shortcut, with vision winning 97 % of conflicts and closed-loop drift
-  down 28–34 %. v10 has not been run on hardware.
+  down 28–34 %. Run by the organizers on the challenge rig at the IROS 2026 venue, v10
+  completed the first two of the six folds; the airplane was not finished.
+- **5th place, Team PixelPaper.** The entry by Ismael Espinoza Jaramillo and Patricio Rivera
+  finished 5th in the organizers' final ranking of the IROS 2026 Robotic Origami Challenge
+  (announced on the challenge's X account).
 
 ## Results at a glance
 
@@ -60,7 +64,7 @@ full stack:
 | Isaac Sim mirror error (rad) | 0.0149 | **0.0100** (v6) | — | — |
 | Vision wins state/image conflicts | — | 12 % (v7) | 6 % | **97 %** |
 | Closed-loop drift, async (rad, 30 s) | — | — | 0.0337 | **0.0224** |
-| Real robot | — | — | 0 folds, 2 sessions | not tested |
+| Real robot | — | — | 0 folds, 2 sessions | **2 of 6 folds**, IROS 2026 venue |
 
 See [`docs/RESULTS.md`](docs/RESULTS.md) for every gate, the simulation results and the
 live-session analysis.
@@ -116,8 +120,8 @@ evaluation and serving.
 
 ## Author
 
-**Ismael Espinoza**. Robot, dataset and live evaluation were provided by the IROS 2026
-Robotic Origami Challenge organizers.
+**Team PixelPaper: Ismael Espinoza Jaramillo and Patricio Rivera.** Robot, dataset and live
+evaluation were provided by the IROS 2026 Robotic Origami Challenge organizers.
 
 ---
 

@@ -56,7 +56,7 @@
     <div class="fact"><b>849 demos</b><span>45 h of teleoperation, 398 GB downloaded</span></div>
     <div class="fact"><b>10 versions</b><span>v1 → v10 in ten weeks on 2× RTX 5070 Ti</span></div>
     <div class="fact"><b>0.0100 rad</b><span>mean simulated joint error (v6 mirror)</span></div>
-    <div class="fact"><b>0 folds</b><span>completed in two real-robot sessions, root-caused below</span></div>
+    <div class="fact"><b>2 of 6 folds</b><span>by v10 at the IROS 2026 venue · 5th place, Team PixelPaper</span></div>
   </div>
 </section>
 
@@ -181,7 +181,7 @@
 <!-- ================= REAL ROBOT ================= -->
 <section id="robot" aria-labelledby="h-robot">
   <span class="sec-num">6 · Real robot</span>
-  <h2 id="h-robot">Two live sessions, no completed fold</h2>
+  <h2 id="h-robot">Live sessions: two v9 failures, then two folds with v10 at IROS 2026</h2>
   <div class="prose">
     <p>The organizers ran the v9 policy on their robot twice. Neither session folded the paper. The hands moved purposefully for a few seconds, then slowed, closed into fists and pressed the sheet into a tent until a protective stop or the operator ended the episode. These are the organizers' head-camera recordings, cropped, at 2× speed.</p>
   </div>
@@ -230,7 +230,7 @@
     <div class="callout" style="margin-top:0">
       <p><b>The v10 fix.</b> I finetuned v9 with the joint state <em>masked on 50 % of samples</em> (a sentinel outside the normalized range) and 0.10 rad of noise on the rest, keeping clean targets. The images now have to carry the trajectory.</p>
       <p>The gains grow with augmentation strength: a milder arm (30 % / 0.05 rad) lands halfway. So the effect comes from the shortcut-breaking, not from anything else in the recipe.</p>
-      <p class="small">v10 was the final submission. It has not been run on the robot, so its real-world effect is unmeasured.</p>
+      <p class="small">v10 was the final submission. Run by the organizers on the challenge rig at the IROS 2026 venue (not recorded, no log shared), it completed the first two of the six folds; the airplane was not finished. Team PixelPaper placed 5th in the final ranking.</p>
     </div>
   </div>
   <h3>v9 (failed live) vs. v10 (final submission)</h3>
@@ -301,7 +301,7 @@ docs/           this page, results summary, data notes</pre>
 <footer>
   <div class="wrap">
     <span>FoldingACT · Ismael Espinoza · 2026</span>
-    <span>Robot, dataset and live evaluation provided by the IROS 2026 Robotic Origami Challenge organizers.</span>
+    <span>Team PixelPaper: Ismael Espinoza Jaramillo and Patricio Rivera. Robot, dataset and live evaluation provided by the IROS 2026 Robotic Origami Challenge organizers.</span>
   </div>
 </footer>
 

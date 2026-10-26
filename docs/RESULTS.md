@@ -5,13 +5,17 @@ The interactive version of this page, with videos and charts, is at
 Units are radians unless marked "norm." (q01/q99-normalized). Every number comes from the
 evaluation artifacts in `outputs/eval/` or from the experiment logs.
 
-> **Bottom line.** FoldingACT went through ten versions in about ten weeks and reached strong
-> offline and simulated numbers, but **no fold was completed on the real robot**. The
-> organizers ran v9 in two live sessions (2026-09-01 and 2026-09-29), and both failed. The
+> **Bottom line.** FoldingACT went through ten versions in about ten weeks. The organizers
+> ran v9 in two remote sessions (2026-09-01 and 2026-09-29); both failed without a fold. The
 > second session made the root cause measurable: the policy had learned to replay its own
 > joint state instead of steering by vision. v10, the final submission, was trained to break
 > that shortcut. It improves every closed-loop and grounding metric offline, at a measured
-> cost in teacher-forced accuracy. v10 has not been tested on hardware.
+> cost in teacher-forced accuracy. Run by the organizers on the challenge rig at the
+> **IROS 2026 venue** (Pittsburgh, Sep 27 – Oct 1), **v10 completed the first two of the six
+> folds**; the airplane was not finished. **Team PixelPaper** (Ismael Espinoza Jaramillo,
+> Patricio Rivera) **placed 5th** in the organizers' final ranking. The venue run was not
+> recorded and no log was shared, so every measurement below comes from the two earlier
+> sessions.
 
 ## 1. Setup
 
@@ -54,7 +58,7 @@ split, torque dropout, 0.01 rad observation noise and 0–4 frames of latency ji
 | v7 | retrained for the Zenoh contract (real head_right + torque) | Zenoh replay 0.0159 | shipped |
 | v8 / v8.2 | + StageNet; per-joint clamp + continuity ramp | Shadow violations 308 → **0** | shipped |
 | v9 | finetune on the competition paper set + 15 % replay | new-paper error −44 % vs v7; no forgetting | **failed live ×2** |
-| v10 | state dropout 50 % + 0.10 rad state noise | vision wins 97 % of conflicts (v9: 6 %) | **final submission** |
+| v10 | state dropout 50 % + 0.10 rad state noise | vision wins 97 % of conflicts (v9: 6 %) | **final submission · 2 of 6 folds at IROS 2026** |
 
 Replay = mean |predicted − demonstrated| joint target over 3 held-out episodes (15,773
 frames), streamed through the real policy server. Mirror = the same error with the
@@ -92,6 +96,11 @@ hands-flexed fixture, and it also improved one-step replay error (0.0246 → 0.0
 |---|---|---|---|---|---|
 | 2026-09-01 | v9.2, sync | 10 run (+5 not started) | 11–43 s | 6 protective, 4 operator stops | 0 |
 | 2026-09-29 | v9.2, async ×3 / sync ×2 | 5 | 36–65 s | 4 protective, 1 operator stop | 0 |
+| IROS 2026 venue, Sep 27 – Oct 1 | v10 | run by the organizers, not recorded | — | — | **2 of 6** |
+
+**IROS venue run.** The organizers ran v10 on the challenge rig at IROS 2026 in Pittsburgh.
+The policy completed the first two folds and did not finish the airplane. No video or log of
+this run was shared, so the analysis below covers the two recorded v9 sessions only.
 
 **What happened.** The hands moved for a few seconds, then slowed, closed into fists and
 pressed the sheet into a tent. In the session-2 episodes, the left middle-finger DIP was
